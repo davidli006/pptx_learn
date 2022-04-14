@@ -3,7 +3,7 @@ from pptx.dml.color import RGBColor
 from pptx.enum.dml import MSO_PATTERN_TYPE
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 from pptx.enum.text import MSO_AUTO_SIZE, MSO_VERTICAL_ANCHOR
-from pptx.util import Inches
+from pptx.util import Inches, Pt
 
 prs = Presentation()
 
@@ -48,6 +48,24 @@ paragraph = tf.add_paragraph()
 paragraph.text = "3333"
 paragraph.level = 2
 
+print("-"*10, "font", "-"*10)
+font = paragraph.font
+print(font)
+font.bold = True
+font.color.rgb = RGBColor(200, 100, 50)
+
+# 填充 就不显示字
+# ff = font.fill
+# ff.patterned()
+# fill.back_color.rgb = RGBColor(20, 10, 20)
+# fill.pattern = MSO_PATTERN_TYPE.DOTTED_DIAMOND
+
+font.italic = True
+font.language_id = 1
+font.size = Pt(24)
+font.underline = True
+
+print("-"*25)
 print(tf.auto_size)
 tf.auto_size = MSO_AUTO_SIZE.NONE
 tf.vertical_anchor = MSO_VERTICAL_ANCHOR.MIDDLE
